@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d("abcd", "signInWithEmail:success")
                     val user = auth.currentUser
                     Toast.makeText(this,"Sign In Successful",Toast.LENGTH_LONG).show()
-                    startUploadActivity()
+                    startUserActivity(auth)
                     //updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
@@ -55,8 +55,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun startUploadActivity() {
-        val intent = Intent(this, UploadActivity::class.java)
+    private fun startUserActivity(auth:FirebaseAuth) {
+        val intent = Intent(this, UserActivity::class.java)
+        intent.putExtra("auth",auth)
         startActivity(intent)
     }
 
